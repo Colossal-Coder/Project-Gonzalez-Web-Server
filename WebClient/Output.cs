@@ -211,7 +211,7 @@ namespace WebClient
 
         public void OutputYesOrNo()
         {
-            Console.Write("     -<Yes> or <No>-");
+            Console.Write("     -<Yes> or <No>- ");
             Console.ForegroundColor = ConsoleColor.Green;
         }
 

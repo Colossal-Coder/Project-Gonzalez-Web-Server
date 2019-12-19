@@ -51,7 +51,9 @@ namespace WebClient
                             Console.Write("please type in the string you would like to send?\n");
                             outputs.OutputBorder2();
                             Console.Write("     String:");
+                            Console.ForegroundColor = ConsoleColor.Green;
                             input = Console.ReadLine().ToUpper();
+                            Console.ForegroundColor = ConsoleColor.White;
                             inputCheck = outputs.Valid_NameInput(input);
                             httpInput = input;
                         }
@@ -59,19 +61,20 @@ namespace WebClient
 
                         do
                         {
-                            Console.ForegroundColor = ConsoleColor.White;
                             Console.Clear();
+                            ws.Run();
+                            Thread.Sleep(1000);
+                            Console.ForegroundColor = ConsoleColor.White;
                             Console.Write("\nGo and check this '");
-                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.ForegroundColor = ConsoleColor.Green;
                             Console.Write("http://localhost:8080/test/");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.Write("' link for your output!");
                             outputs.OutputBorder2();
                             Console.WriteLine("\n\nWould you like to input another  string message?\n1=quit\n2=yes");
-                            Console.ForegroundColor = ConsoleColor.Green;
                             outputs.OutputBorder2();
-                            ws.Run();
                             outputs.OutputInput1();
+                            Console.ForegroundColor = ConsoleColor.Green;
                             input = Console.ReadLine().ToUpper();
                             Console.ForegroundColor = ConsoleColor.White;
                             inputCheck = outputs.Valid_InputNum0_2(input);
@@ -97,12 +100,9 @@ namespace WebClient
 
         public static string SendResponse(HttpListenerRequest request)
         {
-            return string.Format("<HTML><BODY>{0}<br>{1}</BODY></HTML>",httpInput, DateTime.Now);
+            return string.Format("<HTML><BODY>{0}<br><br><br>{1}</BODY></HTML>",httpInput, DateTime.Now);
         }
-        public static string SendCustomResponse(HttpListenerRequest request)
-        {
-            return string.Format("<HTML><BODY>My web page.<br>{0}</BODY></HTML>", DateTime.Now);
-        }
+        
     }
     public class WebServer
     {
