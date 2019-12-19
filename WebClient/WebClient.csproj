@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AECF99A5-146E-4EBB-9B80-A1D1EE36CB62}</ProjectGuid>
+    <ProjectGuid>{E5A679E9-ECD6-42EB-95EA-F5CABDCFD9D3}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>myWebServer</RootNamespace>
-    <AssemblyName>myWebServer</AssemblyName>
+    <RootNamespace>WebClient</RootNamespace>
+    <AssemblyName>WebClient</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebServe.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

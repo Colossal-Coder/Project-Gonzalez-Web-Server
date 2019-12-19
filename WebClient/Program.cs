@@ -4,17 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace myWebServer
+namespace WebClient
 {
-    
-    class Program:WebServe
+    class Program
     {
-        WebServer webServer = new WebServer();
-
         static void Main(string[] args)
         {
-            web
         }
     }
 }

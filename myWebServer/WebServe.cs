@@ -10,8 +10,10 @@ namespace WebServer
     {
         private readonly HttpListener _listener = new HttpListener();
         private readonly Func<HttpListenerRequest, string> _responderMethod;
+        
         public void startServer()
         {
+           
             var rstr = _responderMethod(ctx.Request);
             var buf = Encoding.UTF8.GetBytes(rstr);
             ctx.Response.ContentLength64 = buf.Length;
@@ -60,7 +62,7 @@ namespace WebServer
                     {
                         ThreadPool.QueueUserWorkItem(c =>
                         {
-                            var ctx = c as HttpListenerContext;
+                            ctx = c as HttpListenerContext;
                             try
                             {
                                 if (ctx == null)
@@ -119,3 +121,4 @@ namespace WebServer
         }
     }
 }
+
