@@ -16,21 +16,40 @@ namespace WebClient
             Outputs outputs = new Outputs();
 
             var ws = new WebServer(SendResponse, "http://localhost:8080/test/");
-            do
-            {
-                Console.Clear();
-                Console.WriteLine("A simple webserver. Would you like to send a message?");
-                outputs.OutputYesOrNo();
-                input = Console.ReadLine().ToUpper();
+            do {
+                do
+                {
+                    Console.Clear();
+                    Console.WriteLine("A simple webserver. Would you like to send a message?");
+                    outputs.OutputYesOrNo();
+                    input = Console.ReadLine().ToUpper();
 
-                ws.Run();
-                inputCheck=outputs.Valid_Input_YesNo(input);
+                    ws.Run();
+                    inputCheck = outputs.Valid_Input_YesNo(input);
 
-            } while (inputCheck == "NO");
+                } while (inputCheck == "NO");
+
+                if (input == "YES")
+                {
+                    do
+                    {
+                        Console.WriteLine("please type in the string you would like to send?, " +
+                            "\nplease use underscores instead of spaces until i solve this glitch!");
+                        input = Console.ReadLine();
+                        inputCheck = outputs.Valid_NameInput(input);
+                    }
+                    while (inputCheck == "NO");
+
+                }
+            } while ();
             Console.ReadLine();
             ws.Stop();
         }
         public static string SendResponse(HttpListenerRequest request)
+        {
+            return string.Format("<HTML><BODY>My web page.<br>{0}</BODY></HTML>", DateTime.Now);
+        }
+        public static string SendCustomResponse(HttpListenerRequest request)
         {
             return string.Format("<HTML><BODY>My web page.<br>{0}</BODY></HTML>", DateTime.Now);
         }

@@ -21,21 +21,21 @@ namespace WebClient
                 return "NO";
             }
         }
-        public bool Valid_NameInput(string input)
+        public string Valid_NameInput(string input)
         {
             Regex regex = new Regex(@"^([A-Z-a-z]+)$");
             bool valid = false;
             valid = regex.IsMatch(input);
             if (valid == true)
             {
-                return valid;
+                return "YES";
             }
             else
             {
                 Console.WriteLine("NOT A VALID NAME");
                 Console.ReadLine();
 
-                return false;
+                return "NO";
             }
         }
 
