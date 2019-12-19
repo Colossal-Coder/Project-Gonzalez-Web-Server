@@ -4,7 +4,11 @@ using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-
+/*   Developer: "Aaron Staight"
+ *        Spec: This client was desinged and created to share strings via a network/browser
+ *              It uses a http listener and receiver to interact with the browser correctly
+ *3-rd parties: "NULL"
+ */
 namespace WebClient
 {
     internal class Program
@@ -57,14 +61,22 @@ namespace WebClient
                         {
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.Clear();
-                            ws.Run();
-                            Console.WriteLine("Would you like to input another  string message?\n1=quit\n2=yes");
+                            Console.Write("\nGo and check this '");
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("http://localhost:8080/test/");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("' link for your output!");
+                            outputs.OutputBorder2();
+                            Console.WriteLine("\n\nWould you like to input another  string message?\n1=quit\n2=yes");
                             Console.ForegroundColor = ConsoleColor.Green;
+                            outputs.OutputBorder2();
+                            ws.Run();
+                            outputs.OutputInput1();
                             input = Console.ReadLine().ToUpper();
                             Console.ForegroundColor = ConsoleColor.White;
                             inputCheck = outputs.Valid_InputNum0_2(input);
                         } while (inputCheck == "NO");
-                    }while (input == "NO");
+                    }while (input == "2");
                     input = null;
                 }
             } while (quit=="NO");
@@ -179,6 +191,11 @@ namespace WebClient
 
         public void Stop()
         {
+            Console.Write("Coded By 'Aaron Staight'\n;)");
+            Thread.Sleep(3000);
+            Console.Clear();
+            Console.Write("\n\n\n        Goodbye thanks for using my client!!!");
+            Thread.Sleep(2250);
             _listener.Stop();
             _listener.Close();
         }
