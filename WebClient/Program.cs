@@ -45,8 +45,8 @@ namespace WebClient
                 if (input == "YES")
                 {
                     do {
-                        do
-                        {
+                        
+                        
                             outputs.OutputBorder1();
                             Console.Write("please type in the string you would like to send?\n");
                             outputs.OutputBorder2();
@@ -54,10 +54,9 @@ namespace WebClient
                             Console.ForegroundColor = ConsoleColor.Green;
                             input = Console.ReadLine().ToUpper();
                             Console.ForegroundColor = ConsoleColor.White;
-                            inputCheck = outputs.Valid_NameInput(input);
+                            
                             httpInput = input;
-                        }
-                        while (inputCheck == "NO");
+                        
 
                         do
                         {
