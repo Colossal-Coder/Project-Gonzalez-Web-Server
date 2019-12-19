@@ -48,7 +48,9 @@ namespace WebClient
                         
                         
                             outputs.OutputBorder1();
-                            Console.Write("please type in the string you would like to send?\n");
+                            Console.Write("please type in the string you would like to send?\n\n" +
+                                "You can now directly type in HTML code to mapipulate the browser\n\n" +
+                                "you can add images and many more things");
                             outputs.OutputBorder2();
                             Console.Write("     String:");
                             Console.ForegroundColor = ConsoleColor.Green;
@@ -99,7 +101,7 @@ namespace WebClient
 
         public static string SendResponse(HttpListenerRequest request)
         {
-            return string.Format("<HTML><BODY>{0}<br><br><br>{1}</BODY></HTML>",httpInput, DateTime.Now);
+            return string.Format("<HTML><div>{0}<br><br><br>{1}</div></HTML>", "<HTML><BODY><br>hello</BODY></HTML>",httpInput, DateTime.Now);
         }
         
     }
