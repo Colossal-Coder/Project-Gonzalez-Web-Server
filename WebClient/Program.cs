@@ -101,7 +101,7 @@ namespace WebClient
 
         public static string SendResponse(HttpListenerRequest request)
         {
-            return string.Format("<HTML><div>{0}<br><br><br>{1}</div></HTML>", "<HTML><BODY><br>hello</BODY></HTML>",httpInput, DateTime.Now);
+            return string.Format("<HTML><div>{0}<br><br>{1}</div></HTML>", "<HTML><BODY><br>hello</BODY></HTML>",httpInput, DateTime.Now);
         }
         
     }
