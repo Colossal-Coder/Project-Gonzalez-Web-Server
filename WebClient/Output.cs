@@ -23,7 +23,7 @@ namespace WebClient
         }
         public string Valid_NameInput(string input)
         {
-            Regex regex = new Regex(@"^([A-Z-a-z]+)$");
+            Regex regex = new Regex(@"^([A-Z-a-z- ]+)$");
             bool valid = false;
             valid = regex.IsMatch(input);
             if (valid == true)
@@ -211,7 +211,7 @@ namespace WebClient
 
         public void OutputYesOrNo()
         {
-            Console.Write(" -<Yes> or <No>-");
+            Console.Write("     -<Yes> or <No>-");
             Console.ForegroundColor = ConsoleColor.Green;
         }
 

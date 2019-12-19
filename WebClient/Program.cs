@@ -9,10 +9,14 @@ namespace WebClient
 {
     internal class Program
     {
+        static string httpInput = "DEFaULT";
         private static void Main(string[] args)
         {
+            Console.ForegroundColor=ConsoleColor.White;
             string input;
             string inputCheck;
+            string quit = "";
+            
             Outputs outputs = new Outputs();
 
             var ws = new WebServer(SendResponse, "http://localhost:8080/test/");
@@ -20,34 +24,68 @@ namespace WebClient
                 do
                 {
                     Console.Clear();
-                    Console.WriteLine("A simple webserver. Would you like to send a message?");
+                    Console.Write("A simple '");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("webServer");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write("' Would you like to send a message?\n");
                     outputs.OutputYesOrNo();
                     input = Console.ReadLine().ToUpper();
+                    Console.ForegroundColor = ConsoleColor.White;
 
-                    ws.Run();
+                    
                     inputCheck = outputs.Valid_Input_YesNo(input);
 
                 } while (inputCheck == "NO");
 
                 if (input == "YES")
                 {
-                    do
-                    {
-                        Console.WriteLine("please type in the string you would like to send?, " +
-                            "\nplease use underscores instead of spaces until i solve this glitch!");
-                        input = Console.ReadLine();
-                        inputCheck = outputs.Valid_NameInput(input);
-                    }
-                    while (inputCheck == "NO");
+                    do {
+                        do
+                        {
+                            outputs.OutputBorder1();
+                            Console.Write("please type in the string you would like to send?\n");
+                            outputs.OutputBorder2();
+                            Console.Write("     String:");
+                            input = Console.ReadLine().ToUpper();
+                            inputCheck = outputs.Valid_NameInput(input);
+                            httpInput = input;
+                        }
+                        while (inputCheck == "NO");
 
+                        do
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Clear();
+                            ws.Run();
+                            Console.WriteLine("Would you like to input another  string message?\n1=quit\n2=yes");
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            input = Console.ReadLine().ToUpper();
+                            Console.ForegroundColor = ConsoleColor.White;
+                            inputCheck = outputs.Valid_InputNum0_2(input);
+                        } while (inputCheck == "NO");
+                    }while (input == "NO");
+                    input = null;
                 }
-            } while ();
+            } while (quit=="NO");
+            if (input == "NO")
+            {
+                ws.Run();
+            }
+            Console.WriteLine("\nprogram will quit after you press 'ENTER'");
             Console.ReadLine();
             ws.Stop();
         }
+
+
+
+
+
+
+
         public static string SendResponse(HttpListenerRequest request)
         {
-            return string.Format("<HTML><BODY>My web page.<br>{0}</BODY></HTML>", DateTime.Now);
+            return string.Format("<HTML><BODY>{0}<br>{1}</BODY></HTML>",httpInput, DateTime.Now);
         }
         public static string SendCustomResponse(HttpListenerRequest request)
         {
