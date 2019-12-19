@@ -11,17 +11,23 @@ namespace WebClient
     {
         private static void Main(string[] args)
         {
-            string check;
+            string input;
+            string inputCheck;
             Outputs outputs = new Outputs();
 
             var ws = new WebServer(SendResponse, "http://localhost:8080/test/");
             do
             {
-                ws.Run();
+                Console.Clear();
                 Console.WriteLine("A simple webserver. Would you like to send a message?");
-                check = Console.ReadLine();
-                check = outputs.Valid_Input_YesNo(check);
-            } while (check == "YES");
+                outputs.OutputYesOrNo();
+                input = Console.ReadLine().ToUpper();
+
+                ws.Run();
+                inputCheck=outputs.Valid_Input_YesNo(input);
+
+            } while (inputCheck == "NO");
+            Console.ReadLine();
             ws.Stop();
         }
         public static string SendResponse(HttpListenerRequest request)
@@ -70,7 +76,9 @@ namespace WebClient
         {
             ThreadPool.QueueUserWorkItem(o =>
             {
-                Console.WriteLine("Webserver running...");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\nWebserver currently running...\n");
+                Console.ForegroundColor = ConsoleColor.White;
                 try
                 {
                     while (_listener.IsListening)
