@@ -101,9 +101,10 @@ namespace WebClient
 
         public static string SendResponse(HttpListenerRequest request)
         {
-            return string.Format("<HTML><div>{0}<br><br>{1}</div></HTML>", "<HTML><BODY><br>hello</BODY></HTML>",httpInput, DateTime.Now);
+            return string.Format("<HTML><div>{0}<br><br>{1}</div></HTML>",httpInput, DateTime.Now);
+            //test this //<ul id=list_nav class="struct-square"><li>  <a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li><li><a href="about.html">Contact</a></li></ul>
         }
-        
+
     }
     public class WebServer
     {
@@ -192,7 +193,7 @@ namespace WebClient
 
         public void Stop()
         {
-            Console.Write("Coded By 'Aaron Staight'\n;)");
+            Console.Write("             Coded By 'Aaron Staight'\n;)");
             Thread.Sleep(3000);
             Console.Clear();
             Console.Write("\n\n\n        Goodbye thanks for using my client!!!");
